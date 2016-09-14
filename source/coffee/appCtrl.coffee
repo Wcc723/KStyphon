@@ -12,7 +12,7 @@ angular.module 'app'
         vm.type = '停電'
     vm.type = [
           '停電',
-          '停水',
+          '路樹傾倒',
           '暴雨積水'
       ]
     vm.typeNow = ''
@@ -26,7 +26,7 @@ angular.module 'app'
       origigndata = response.data
       thisdata =[]
       origigndata.forEach (d) ->
-        if d.InformDesc_ == '停電' or d.InformDesc_ == '暴雨積水(一)' or d.InformDesc_ == '暴雨積水(二)' or d.InformDesc_ == '停水' or d.InformDesc_ == '地下道、路面積水(一)' or d.InformDesc_ == '地下道、路面積水(二)'
+        if d.InformDesc_ == '停電' or d.InformDesc_ == '暴雨積水(一)' or d.InformDesc_ == '暴雨積水(二)' or d.InformDesc_ == '停水' or d.InformDesc_ == '地下道、路面積水(一)' or d.InformDesc_ == '地下道、路面積水(二)' or d.InformDesc_ == '路樹傾倒(一)' or d.InformDesc_ == '路樹傾倒(二)'
           if d.Status_ != "5"
             thisdata.push d
       vm.data = thisdata
