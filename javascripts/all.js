@@ -18,7 +18,7 @@ angular.module('app').controller('appCtrl', [
         return vm.type = '停電';
       }
     };
-    vm.type = ['停電', '停水', '暴雨積水'];
+    vm.type = ['停電', '路樹傾倒', '暴雨積水'];
     vm.typeNow = '';
     vm.park = park;
     vm.parks = '';
@@ -31,7 +31,7 @@ angular.module('app').controller('appCtrl', [
       origigndata = response.data;
       thisdata = [];
       origigndata.forEach(function(d) {
-        if (d.InformDesc_ === '停電' || d.InformDesc_ === '暴雨積水(一)' || d.InformDesc_ === '暴雨積水(二)' || d.InformDesc_ === '停水' || d.InformDesc_ === '地下道、路面積水(一)' || d.InformDesc_ === '地下道、路面積水(二)') {
+        if (d.InformDesc_ === '停電' || d.InformDesc_ === '暴雨積水(一)' || d.InformDesc_ === '暴雨積水(二)' || d.InformDesc_ === '停水' || d.InformDesc_ === '地下道、路面積水(一)' || d.InformDesc_ === '地下道、路面積水(二)' || d.InformDesc_ === '路樹傾倒(一)' || d.InformDesc_ === '路樹傾倒(二)') {
           if (d.Status_ !== "5") {
             return thisdata.push(d);
           }
