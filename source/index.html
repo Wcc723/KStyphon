@@ -41,6 +41,9 @@
         <div class="tab-content">
           <div ng-show="app.kind=='area'" class="tab-pane active"  role="tabpanel">
             <div class="m-t-2" >
+              <div class="alert alert-danger" role="alert">
+                高雄民眾如有任何需要協助，請撥打  <i class="fa fa-phone"></i><a href="tel:1999">1999(點我撥打)</a> 專線 
+              </div>
               <div class="m-b-3 row">
                 <div class="col-sm-4">
                   <label for="sort">災害類型</label>
@@ -67,7 +70,7 @@
                 <div class="card" ng-repeat="(key, item) in app.items = (app.data | filter: app.zipname.name | filter:app.typeNow)">
                   <div class="card-block">
                     <div class="text-muted">
-                       <i class="fa"  aria-hidden="true" ng-class="{'fa-plug': item.InformDesc_=='停電', 'fa-tint':  item.InformDesc_=='暴雨積水(一)'||item.InformDesc_=='暴雨積水(二)'||item.InformDesc_=='停水'}"></i>
+                       <i class="fa"  aria-hidden="true" ng-class="{'fa-plug': item.InformDesc_=='停電', 'fa-tree':  item.InformDesc_=='路樹傾倒(一)'||item.InformDesc_=='養工-路樹傾倒(二)'}"></i>
                       <span ng-bind="item.ZipName_" class="tag tag-primary"></span>
                       <span ng-bind="item.address_"></span>
                     </div>
