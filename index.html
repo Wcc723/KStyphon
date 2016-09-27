@@ -84,6 +84,9 @@
           </div>
           <div class="park"  ng-show="app.kind=='park'"  >
           <div class="m-t-2"></div>
+            <div class="alert alert-danger" role="alert">
+              此處所顯示之臨時停車處所，係於高雄市政府公告後才開放供市民緊急停放車輛。
+            </div>
             <select id="sort" class="form-control" name=""
                ng-options="item.name for item in app.zipNames"
               ng-model="app.zipnamePark">
