@@ -25,6 +25,13 @@
       </li>
     </ul>
   </nav>
+
+  <div class="container" ng-if="vm.data.length === 0 || !app.status.api">
+    <div class="alert alert-success text-xs-center">
+      「目前尚無颱風侵襲」
+    </div>
+  </div>
+
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -42,7 +49,7 @@
           <div ng-show="app.kind=='area'" class="tab-pane active"  role="tabpanel">
             <div class="m-t-2" >
               <div class="alert alert-danger" role="alert">
-                高雄民眾如有任何需要協助，請撥打  <i class="fa fa-phone"></i><a href="tel:1999">1999(點我撥打)</a> 專線 
+                高雄民眾如有任何需要協助，請撥打  <i class="fa fa-phone"></i><a href="tel:1999">1999(點我撥打)</a> 專線
               </div>
               <div class="m-b-3 row">
                 <div class="col-sm-4">
@@ -62,7 +69,7 @@
                 </div>
               </div>
 
-              <div class="alert alert-success text-xs-center" ng-if="!app.items.length">
+              <div class="alert alert-success text-xs-center" ng-if="!app.items.length && app.status.api">
                 「您目前搜尋地區無任何災害通報」
               </div>
 

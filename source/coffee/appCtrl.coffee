@@ -20,12 +20,16 @@ angular.module 'app'
     vm.park = park
     vm.parks=''
     vm.zipnamePark=''
+    vm.status = {
+      api: false
+    }
     $http
       method: 'GET',
       url: '//gonsakon.github.io/HolidayAPI/typhon.json'
     .then (response)->
       origigndata = response.data
       thisdata =[]
+      vm.status.api = true
       origigndata.forEach (d) ->
         if d.InformDesc_ == '停電' or d.InformDesc_ == '暴雨積水(一)' or d.InformDesc_ == '暴雨積水(二)' or d.InformDesc_ == '停水' or d.InformDesc_ == '地下道、路面積水(一)' or d.InformDesc_ == '地下道、路面積水(二)' or d.InformDesc_ == '路樹傾倒(一)' or d.InformDesc_ == '路樹傾倒(二)' or d.InformDesc_ == '號誌故障'
           if d.Status_ != "5"
@@ -303,7 +307,7 @@ ks = [
     zip: '852'
   }
 ]
-park = 
+park =
 [
   {
     "area": "苓雅區",
