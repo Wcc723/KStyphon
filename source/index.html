@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
+
 <head>
   <meta charset="UTF-8">
   <title>高雄防災通 - 提供即時停電、停水、淹水資訊</title>
@@ -16,6 +17,7 @@
   <script src="javascripts/vendor.js"></script>
   <script src="javascripts/all.js"></script>
 </head>
+
 <body ng-controller="appCtrl as app">
   <nav class="navbar navbar-light bg-faded header">
     <a class="navbar-brand" href="/">高雄防災通-提供即時停電、停水、淹水資訊</a>
@@ -26,11 +28,11 @@
     </ul>
   </nav>
 
-  <div class="container">
+  <!-- <div class="container">
     <div class="alert alert-success text-xs-center">
       「目前尚無颱風侵襲」
     </div>
-  </div>
+  </div> -->
 
   <div class="container">
     <div class="row">
@@ -40,29 +42,26 @@
             <a class="nav-link" ng-class="{'active': app.kind=='area'}" ng-click="app.kind='area'" data-toggle="tab" href="#home" role="tab">災害查詢</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" ng-class="{'active': app.kind=='park'}"  ng-click="app.kind='park'" data-toggle="tab" href="#park" role="tab">緊急臨時停車場</a>
+            <a class="nav-link" ng-class="{'active': app.kind=='park'}" ng-click="app.kind='park'" data-toggle="tab" href="#park" role="tab">緊急臨時停車場</a>
           </li>
 
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
-          <div ng-show="app.kind=='area'" class="tab-pane active"  role="tabpanel">
-            <div class="m-t-2" >
+          <div ng-show="app.kind=='area'" class="tab-pane active" role="tabpanel">
+            <div class="m-t-2">
               <div class="alert alert-danger" role="alert">
-                高雄民眾如有任何需要協助，請撥打  <i class="fa fa-phone"></i><a href="tel:1999">1999(點我撥打)</a> 專線
+                高雄民眾如有任何需要協助，請撥打 <i class="fa fa-phone"></i><a href="tel:1999">1999(點我撥打)</a> 專線
               </div>
               <div class="m-b-3 row">
                 <div class="col-sm-4">
                   <label for="sort">災害類型</label>
-                  <select id="sort" class="form-control" name=""  ng-model="app.typeNow"
-                     ng-init="app.typeNow = app.type[0]"
-                     ng-options="v as (v + ' ['+ (app.data | filter: v).length +']') for v  in app.type">
+                  <select id="sort" class="form-control" name="" ng-model="app.typeNow" ng-init="app.typeNow = app.type[0]" ng-options="v as (v + ' ['+ (app.data | filter: v).length +']') for v  in app.type">
                   </select>
                 </div>
                 <div class="col-sm-4">
                   <label for="sort">地區</label>
-                  <select id="sort" class="form-control" name=""
-                    ng-options="item as (item.name + ' ['+ (app.data | filter: app.typeNow | filter: item.name).length +']') for item in app.zipNames "
+                  <select id="sort" class="form-control" name="" ng-options="item as (item.name + ' ['+ (app.data | filter: app.typeNow | filter: item.name).length +']') for item in app.zipNames "
                     ng-model="app.zipname">
                     <option value="">-- 全地區 --</option>
                   </select>
@@ -77,7 +76,7 @@
                 <div class="card" ng-repeat="(key, item) in app.items = (app.data | filter: app.zipname.name | filter:app.typeNow)">
                   <div class="card-block">
                     <div class="text-muted">
-                       <i class="fa"  aria-hidden="true" ng-class="{'fa-bolt': item.InformDesc_=='停電', 'fa-tree':  item.InformDesc_=='路樹傾倒(一)'||item.InformDesc_=='養工-路樹傾倒(二)','fa-exclamation-triangle':item.InformDesc_=='號誌故障'}"></i>
+                      <i class="fa" aria-hidden="true" ng-class="{'fa-bolt': item.InformDesc_=='停電', 'fa-tree':  item.InformDesc_=='路樹傾倒(一)'||item.InformDesc_=='養工-路樹傾倒(二)','fa-exclamation-triangle':item.InformDesc_=='號誌故障'}"></i>
                       <span ng-bind="item.ZipName_" class="tag tag-primary"></span>
                       <span ng-bind="item.address_"></span>
                     </div>
@@ -92,14 +91,12 @@
 
             </div>
           </div>
-          <div class="park"  ng-show="app.kind=='park'"  >
-          <div class="m-t-2"></div>
+          <div class="park" ng-show="app.kind=='park'">
+            <div class="m-t-2"></div>
             <div class="alert alert-danger" role="alert">
               此處所顯示之臨時停車處所，係於高雄市政府公告後才開放供市民緊急停放車輛。
             </div>
-            <select id="sort" class="form-control" name=""
-               ng-options="item.name for item in app.zipNames"
-              ng-model="app.zipnamePark">
+            <select id="sort" class="form-control" name="" ng-options="item.name for item in app.zipNames" ng-model="app.zipnamePark">
               <option value="">--選擇停車區域--</option>
             </select>
             <div class="m-t-2"></div>
@@ -114,17 +111,17 @@
                     <i class="fa fa-car" aria-hidden="true"></i>車位：<span ng-bind="item.number"></span>
                   </p>
 
-                <div class="card-text text-xs-right">
-                  <a  href="{{'tel:07'+item.tel}}" class="btn btn-outline-primary btn-sm">
+                  <div class="card-text text-xs-right">
+                    <a href="{{'tel:07'+item.tel}}" class="btn btn-outline-primary btn-sm">
                     <span class="fa fa-phone"></span>
                     電話聯絡
                   </a>
-                  <a target="_blank" href="{{'https://www.google.com.tw/maps/place/高雄市'+item.area+item.location}}" class="btn btn-outline-primary btn-sm">
+                    <a target="_blank" href="{{'https://www.google.com.tw/maps/place/高雄市'+item.area+item.location}}" class="btn btn-outline-primary btn-sm">
                     <span class="fa fa-map-o"></span>
                     連到地圖
                   </a>
                   </div>
-                 </div>
+                </div>
               </div>
             </div>
           </div>
@@ -134,14 +131,16 @@
   </div>
 
   <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)    
+}, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-84087328-1', 'auto');
     ga('send', 'pageview');
-
   </script>
 </body>
+
 </html>
