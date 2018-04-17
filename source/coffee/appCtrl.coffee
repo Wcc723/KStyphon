@@ -25,7 +25,7 @@ angular.module 'app'
     }
     $http
       method: 'GET',
-      url: '//gonsakon.github.io/HolidayAPI/typhon.json'
+      url: 'http://work1999.kcg.gov.tw/open1999/ServiceRequestsQuery.asmx/ServiceRequestsQuery'
     .then (response)->
       origigndata = response.data
       thisdata =[]
