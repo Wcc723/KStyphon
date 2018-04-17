@@ -23,13 +23,17 @@ angular.module('app').controller('appCtrl', [
     vm.park = park;
     vm.parks = '';
     vm.zipnamePark = '';
+    vm.status = {
+      api: false
+    };
     $http({
       method: 'GET',
-      url: '//gonsakon.github.io/HolidayAPI/typhon.json'
+      url: 'http://work1999.kcg.gov.tw/open1999/ServiceRequestsQuery.asmx/ServiceRequestsQuery'
     }).then(function(response) {
       var origigndata, thisdata;
       origigndata = response.data;
       thisdata = [];
+      vm.status.api = true;
       origigndata.forEach(function(d) {
         if (d.InformDesc_ === '停電' || d.InformDesc_ === '暴雨積水(一)' || d.InformDesc_ === '暴雨積水(二)' || d.InformDesc_ === '停水' || d.InformDesc_ === '地下道、路面積水(一)' || d.InformDesc_ === '地下道、路面積水(二)' || d.InformDesc_ === '路樹傾倒(一)' || d.InformDesc_ === '路樹傾倒(二)' || d.InformDesc_ === '號誌故障') {
           if (d.Status_ !== "5") {
