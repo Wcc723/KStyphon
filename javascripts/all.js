@@ -28,7 +28,7 @@ angular.module('app').controller('appCtrl', [
     };
     $http({
       method: 'GET',
-      url: 'http://work1999.kcg.gov.tw/open1999/ServiceRequestsQuery.asmx/ServiceRequestsQuery'
+      url: 'https://work1999.kcg.gov.tw/open1999/ServiceRequestsQuery.asmx/ServiceRequestsQuery'
     }).then(function(response) {
       var origigndata, thisdata;
       origigndata = response.data;
